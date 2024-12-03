@@ -14,6 +14,6 @@ function solve(i,s=0,mul=1)
       mul = ~m[1] ? 0 : 1
     end
   end
-  println(s)
+  s
 end
-solve(input)
+solve(input)|>println
