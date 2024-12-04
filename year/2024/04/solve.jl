@@ -16,8 +16,11 @@ tot += sum(A->sum(s->sum(i->count(s, join(diag(A, i))), -l:l), rs), [M, reverse(
 println(tot)
 
 # **
-sum(r->sum(k->sum(j->count(r, join(line[i*l+k:i*l+k+2] for i=j:j+2)),
-	0:l-3), # j
-	1:l-2), # k
-	[r"M.S.A.M.S", r"M.M.A.S.S", r"S.S.A.M.M", r"S.M.A.S.M"] # r
-	)|>println
+sum(r->
+		sum(k->
+				sum(j->
+						count(r, join(line[i*l+k:i*l+k+2] for i=j:j+2)),
+					0:l-3),
+			1:l-2),
+	[r"M.S.A.M.S", r"M.M.A.S.S", r"S.S.A.M.M", r"S.M.A.S.M"]
+)|>println
