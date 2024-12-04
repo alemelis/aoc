@@ -2,5 +2,6 @@
 **/*.swp
 
 **/input.txt
+**/example.txt
 
 **/.DS_Store
