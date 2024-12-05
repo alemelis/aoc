@@ -1,3 +1,6 @@
-S=split;R,U=S.(S(readchomp("input.txt"),"\n\n"));U=S.(U,",").|>u->parse.(Int,u)
-lt=(a,b)->"$a|$b"∈R;!u=issorted(u,lt=lt);print(sum(u[end÷2+1] for u=U if !u)," "
-,sum((sort!(u, lt=lt);u[end÷2+1]) for u=U if~!u))
+S=split;R,U=S.(S(readchomp(stdin),"
+
+"))
+U=@.S(U,",")|>u->parse(Int,u)
+a/b="$a|$b"∈R;!n=issorted(n,lt=/)
+print(sum(u->u[end÷2+1]*!u,U)," ",sum(u->~!u*sort(u,lt=/)[end÷2+1],U))

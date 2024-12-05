@@ -30,4 +30,4 @@ lt = (a, b) -> "$a|$b" ∈ rules
 sum(u[end÷2+1] for u=updates if issorted(u, lt=lt))|>println
 
 # **
-sum((sort!(u, lt=lt);u[end÷2+1]) for u=updates if ~issorted(u, lt=lt))|>println
+sum(sort(u, lt=lt)[end÷2+1] for u=updates if ~issorted(u, lt=lt))|>println
