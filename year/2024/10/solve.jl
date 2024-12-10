@@ -22,41 +22,21 @@ function hike(topo, s)
     queue = Queue{CartesianIndex}()
     enqueue!(queue, s)
     found = Set()
-    score = 0
-    ratings = Dict()
+    score = 0    # pt1
+    ratings = 0  # pt2
     while ~isempty(queue)
         p = dequeue!(queue)
         if topo[p] == 9
-            p∉found && (push!(found, p); score += 1)
-            ratings[(s, p)] = get(ratings, (s, p), 0) + 1
+            p∉found && (score += 1)
+            push!(found, p)
+            ratings += 1
         end
         for d in (N, E, S, W)
             (oob(p+d) || topo[p+d] != topo[p] + 1) && continue
             enqueue!(queue, p+d)
         end
     end
-    (score, sum(v->v[2],ratings))
-end
-
-# same with stack?
-function hikes(topo, s)
-    queue = []
-    push!(queue, s)
-    found = Set()
-    score = 0
-    ratings = Dict()
-    while ~isempty(queue)
-        p = popfirst!(queue)
-        if topo[p] == 9
-            p∉found && (push!(found, p); score += 1)
-            ratings[(s, p)] = get(ratings, (s, p), 0) + 1
-        end
-        for d in (N, E, S, W)
-            (oob(p+d) || topo[p+d] != topo[p] + 1) && continue
-            push!(queue, p+d)
-        end
-    end
-    (score, sum(v->v[2],ratings))
+    (score, ratings)
 end
 
 res = findall(==(0), topo).|>s->hike(topo, s)
