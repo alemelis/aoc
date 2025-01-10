@@ -17,3 +17,5 @@ echo "Downloading input for $YEAR Day $DAY..."
 curl -s --cookie "session=$SESSION_COOKIE" "https://adventofcode.com/$YEAR/day/$(printf "%01d" $DAY)/input" -o "$TARGET_FILE"
 
 echo "Input saved to $TARGET_FILE"
+
+cd "$DIR"
